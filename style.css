@@ -1,0 +1,143 @@
+/* استيراد خط عربي أنيق */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap' );
+
+body {
+    margin: 0;
+    font-family: 'Amiri', serif;
+    overflow: hidden; /* منع التمرير قبل فتح الستارة */
+    background-color: #1a1a1a;
+}
+
+/* حاوية الستائر */
+#curtain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/* تصميم الستارة */
+.curtain {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to right, #800000, #a00000); /* لون أحمر مخملي */
+    box-shadow: inset -10px 0 20px rgba(0,0,0,0.5);
+    transition: width 2s ease-in-out; /* حركة الفتح */
+}
+
+.curtain.left {
+    left: 0;
+}
+
+.curtain.right {
+    right: 0;
+    background: linear-gradient(to left, #800000, #a00000);
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5);
+}
+
+/* حالة فتح الستارة */
+#curtain-container.open .curtain {
+    width: 0;
+}
+
+/* رسالة "اكتشف ما خلف الستار" */
+#curtain-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffd700;
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    transition: opacity 0.5s;
+}
+
+#curtain-container.open #curtain-message {
+    opacity: 0;
+}
+
+/* المحتوى الرئيسي */
+#main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-denim-3.png' ), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+    background-size: auto, cover;
+    opacity: 0;
+    transition: opacity 1s 1s; /* تأخير ظهور المحتوى ليتزامن مع فتح الستارة */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+body.content-visible #main-content {
+    opacity: 1;
+}
+
+/* بطاقة التهنئة */
+.congrats-card {
+    background: rgba(10, 10, 10, 0.7);
+    border: 2px solid #ffd700;
+    border-radius: 15px;
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.congrats-card h1 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 15px;
+}
+
+.congrats-card h2 {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.congrats-card p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.final-wish {
+    font-style: italic;
+    color: #ccc;
+}
+
+/* تنسيق التوقيع المضاف */
+.signature {
+    margin-top: 30px;
+    font-size: 1.3rem;
+    color: #ffd700;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* تصميم متجاوب مع شاشات الجوال */
+@media (max-width: 600px) {
+    #curtain-message {
+        font-size: 1.5rem;
+    }
+    .congrats-card h1 {
+        font-size: 2rem;
+    }
+    .congrats-card h2 {
+        font-size: 2.5rem;
+    }
+    .congrats-card p {
+        font-size: 1rem;
+    }
+    .signature {
+        font-size: 1.1rem;
+    }
+}
